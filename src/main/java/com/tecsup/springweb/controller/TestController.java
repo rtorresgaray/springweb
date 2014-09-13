@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.tecsup.springweb.model.Programa;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
@@ -43,7 +44,6 @@ public class TestController {
         return "test/informacion";
     }
     
-    
 
     @RequestMapping(value = {"info", "prueba"})
     public String pruebas() {
@@ -54,5 +54,22 @@ public class TestController {
     public String alternativo() {
         return "test/informacion";
     }
+    
+    @RequestMapping("programa")
+    public String programa() {
+        return "test/programa";
+    }    
+    
+    @ResponseBody
+    @RequestMapping("guardarPrograma")
+    public String guardarPrograma(Programa programa){
+        return programa.getNombre()+" "+programa.getCodigo();
+        
+    }
+    
+    @RequestMapping("programaAjax")
+    public String programaAjax() {
+        return "test/programaAjax";
+    }    
     
 }
